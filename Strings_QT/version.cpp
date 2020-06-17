@@ -199,7 +199,7 @@ Part 1
     // Concatenation of ints that were changed to strings
     out << s3.setNum(n1) + s4.setNum(n2) << endl;
  */
-
+    /* 
     // Part 9: Categories of Characters.
 
     int digits = 0;
@@ -234,6 +234,61 @@ Part 1
         out << QString("Has a length of %1 Characters").arg(str1.count()) << endl;
         out << QString("Has %1 Letters, %2 Numbers, %3 Punctuations, and %4 Spaces").arg(letters).arg(digits).arg(puncts).arg(spaces) << endl;
         
-        
-        return 0;
+         */
+
+    /* // Part 10    
+    QString str = "Lovely";
+    str.append(" season");
+
+    out << str << endl;
+
+    str.remove(10, 3);
+    out << str << endl;
+
+    str.replace(7, 3, "girl");
+    out << str << endl;
+
+    str.clear();
+
+    if (str.isEmpty())
+    {
+        out << "String is Empty" << endl;
     }
+    else
+    {
+        out << "String has text" << endl;
+    }
+ */
+
+/* // Part 11: Justification of Text
+    QString field1 = "Name: ";
+    QString field2 = "Occupation: ";
+    QString field3 = "Residence: ";
+    QString field4 = "Marital Status: ";
+
+    int width = field4.size();
+
+    out << field1.rightJustified(width, ' ') << "Willio Chap" << endl;
+    out << field2.rightJustified(width, ' ') << "Software Engineer" << endl;
+    out << field3.rightJustified(width, ' ') << "Woodbury, CT" << endl;
+    out << field4.rightJustified(width, ' ') << "Divorced/Dating" << endl; */
+
+    // Part 12: Escaping Characters
+
+    #include <QFile>
+    
+    QFile file("cprog.c");
+    if (!file.open(QIODevice::ReadOnly)){
+        qWarning("Cannot open file for reading");
+        return 1;
+    }
+
+    QTextStream in(&file);
+    QString allText = in.readAll();
+
+    out << allText.toHtmlEscaped() << endl;
+
+    file.close();
+
+    return 0;
+}
