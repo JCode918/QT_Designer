@@ -1,7 +1,7 @@
 #include <QtCore>
 #include <QTextStream>
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
     QTextStream out(stdout);
 
@@ -69,7 +69,7 @@ Part 1
     }
 */
 
-// Part 4: String Building
+    /* // Part 4: String Building
 // When running this part of the code make sure you pass in at least 3 command line parameters
 
     QString s1 = "There are %1 white roses";
@@ -88,7 +88,152 @@ Part 1
     QString s4 = "My Name is %1 and I am a %2 %3";
     out << s4.arg(argv[1]).arg(argv[2]).arg(argv[3])<< endl;
 
-    out << "I passed in " << argc -1 << " command line parmaeters." << endl;
+    out << "I passed in " << argc -1 << " command line parmaeters." << endl; */
+    /* 
+// Part 5: Substrings
+    QString str = "My Name is Sparta!!";
 
-    return 0;
-}
+    // Selects the 5 most right characters of the string
+    out << str.right(5) << endl;
+    // Selects the 9 most left characters of the string
+    out << str.left(9) << endl;
+    // Starting at the 4th Postion, takes the next 5 characters
+    out << str.mid(4, 5) << endl;
+
+    QString str2("The Big Apple");
+
+    // Substring of str2 starting at position 0 and taking the next 7 characters
+    QStringRef sub(&str2, 0, 7);
+
+    // takes reference created by theQstring Ref and turns it into a string
+    out << sub.toString() << endl;
+
+ */
+
+    /*   // Part 6: Looping Through Strings
+    QString str = "There are Many Stars";
+    // Utilizing a For Each Loop
+    foreach (QChar qc, str)
+    {
+        out << qc << " ";
+    }
+    out << endl;
+
+    // Utilizing an Iterator
+    for (QChar *it = str.begin(); it != str.end(); ++it)
+    {
+        out << *it << " ";
+    }
+    out << endl;
+
+    // Normal For Loop
+    for (int i = 0; i < str.size(); i++)
+    {
+        out << str.at(i) << " ";
+    }
+    out << endl;
+ */
+    /* 
+// Part 7: String Comparison
+#define STR_EQUAL 0
+
+    QString a = "Rain";
+    QString b = "rain";
+    QString c = "rain\n";
+
+    if (QString::compare(a, b) == STR_EQUAL)
+    {
+        out << "Strings a and b are equal" << endl;
+    }
+    else
+    {
+        out << "Strings a and b are different" << endl;
+    }
+
+    out << "In Case insensitive Test: " << endl;
+
+    if (QString::compare(a, b, Qt::CaseInsensitive) == STR_EQUAL)
+    {
+        out << "Strings a and b are equal" << endl;
+    }
+    else
+    {
+        out << "Strings a and b are not equal" << endl;
+    }
+
+    if (QString::compare(b, c) == STR_EQUAL)
+    {
+        out << "Strings b and C are equal" << endl;
+    }
+    else
+    {
+        out << "Strings b and c are not equal" << endl;
+    }
+
+    c.chop(1);
+
+    out << "After removing new Line Character: " << endl;
+
+    if (QString::compare(b, c) == STR_EQUAL)
+    {
+        out << "Strings b and C are equal" << endl;
+    }
+    else
+    {
+        out << "Strings b and c are not equal" << endl;
+    }
+ */
+    /* 
+    // Part 8: Conversion of Strings
+
+    QString s1 = "12";
+    QString s2 = "14";
+    QString s3, s4;
+
+    // The Addition of s1 and s2
+    out << s1.toInt() + s2.toInt() << endl;
+
+    int n1 = 30;
+    int n2 = 40;
+
+    // Concatenation of ints that were changed to strings
+    out << s3.setNum(n1) + s4.setNum(n2) << endl;
+ */
+
+    // Part 9: Categories of Characters.
+
+    int digits = 0;
+    int letters = 0;
+    int spaces = 0;
+    int puncts = 0;
+
+    QString str1 = "My name is Willard Joseph. I am 35 year Old Software Engineer, I have 2 Beautiful Kids";
+
+    foreach (QChar qc, str1)
+    {
+        if (qc.isDigit())
+        {
+            digits++;
+        }
+        else if (qc.isSpace())
+        {
+            spaces++;
+        }
+        else if (qc.isLetter())
+        {
+            letters++;
+        }
+        else if (qc.isPunct())
+        {
+            puncts++;
+        }
+    }
+
+        out << "The String :\n"
+            << str1 << endl;
+        out << QString("Has a length of %1 Characters").arg(str1.count()) << endl;
+        out << QString("Has %1 Letters, %2 Numbers, %3 Punctuations, and %4 Spaces").arg(letters).arg(digits).arg(puncts).arg(spaces) << endl;
+        
+        
+        return 0;
+    }
